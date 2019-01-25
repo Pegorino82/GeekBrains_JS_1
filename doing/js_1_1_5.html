@@ -1,0 +1,46 @@
+<!--5*. Пользователь, с помощью команды prompt, вводит номер билета - 6 цифр. -->
+<!--Программа определяет является ли счастливым данный билетик и выводит -->
+<!--соответстующее сообщение в консоль. Счастливый билет - билет, у которого-->
+<!--сумма первых трех цифр равна сумме последних трех цифр номера билета.-->
+<!--Для выполнения задания необходимо использовать оператор % и ветвление.-->
+<!--Чтобы сравнить два значения, можно использовать if и else -->
+<!--(курс основ программирования), например:-->
+
+<!--```-->
+<!--const a = 1;-->
+<!--const b = 1;-->
+<!--if (a === b) {-->
+  <!--console.log('Две переменные a и b равны.');-->
+<!--}-->
+<!--```-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS1 Ex 1/5</title>
+</head>
+<body>
+<h3>JavaScript 1, homework 1, task 5</h3>
+
+<script>
+
+    let ticketString = prompt('Введите номер билета: ');
+    console.log(ticketString.length);
+    while (ticketString.length != 6) {
+        alert('Билет должен содержать 6 цифр!');
+        ticketString = prompt('Введите номер билета: ');
+    };
+
+    let ticketInt = parseInt(ticketString);
+    let rightSum = 0;
+    for (let i=1; i < 4; i++) {
+        console.log(i);
+        rightSum += ticketInt % (10**i);
+    }
+    console.log(rightSum)
+
+
+</script>
+</body>
+</html>
