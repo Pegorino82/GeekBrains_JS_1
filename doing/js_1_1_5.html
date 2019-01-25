@@ -24,31 +24,31 @@
 <h3>JavaScript 1, homework 1, task 5</h3>
 
 <script>
+    "use strict";
 
     let ticketString = prompt('Введите номер билета: ');
     console.log(ticketString.length);
-    while (ticketString.length != 6) {
+    while (ticketString.length !== 6) {
         alert('Билет должен содержать 6 цифр!');
         ticketString = prompt('Введите номер билета: ');
     }
-    ;
 
     let ticketInt = parseInt(ticketString);
     let rightSum = 0;
     let leftSum = 0;
     for (let i = 1; i < 7; i++) {
         if (i < 4) {
-            rightSum += parseInt((ticketInt % (10 ** i)) / (10 ** (i - 1)))
+            rightSum += Math.floor((ticketInt % (10 ** i)) / (10 ** (i - 1)));
         }
         else {
-            leftSum += parseInt((ticketInt % (10 ** i)) / (10 ** (i - 1)))
+            leftSum +=Math.floor((ticketInt % (10 ** i)) / (10 ** (i - 1)));
         }
     }
-    if (leftSum != rightSum) {
-        alert('Вам не повезло (')
+    if (leftSum !== rightSum) {
+        alert('Вам не повезло (');
     }
     else {
-        alert('Вы счастливчик!!!')
+        alert('Вы счастливчик!!!');
     }
     // console.log(rightSum);
     // console.log(leftSum)

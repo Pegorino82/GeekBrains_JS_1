@@ -14,12 +14,13 @@
 <h3>JavaScript 1, homework 1, task 1</h3>
 
 <script>
+    "use strict";
 
     let celsiusTemp = parseInt(prompt('Введите температуру в гр. Цельсия: '));
     // console.log(celsiusTemp);
     let fahrenheitTemp = (9 / 5) * celsiusTemp + 32;
     // console.log(fahrenheitTemp);
-    alert('Температура по Фаренгейту: ' + fahrenheitTemp);
+    alert('Температура по Фаренгейту: ' + fahrenheitTemp.toFixed(1));
 
 </script>
 </body>
