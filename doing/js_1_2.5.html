@@ -1,0 +1,43 @@
+<!--5. Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation),-->
+<!--где arg1, arg2 – значения аргументов, operation – строка с названием операции. В зависимости от-->
+<!--переданного значения операции (использовать switch) выполнить одну из арифметических операций-->
+<!--(использовать функции из задания 4) и вернуть полученное значение.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS1 Ex 2/5</title>
+    <script src="js_1_2.4.js"></script>
+</head>
+<body>
+<h3>JavaScript 1, homework 2, task 5</h3>
+
+<script>
+    "use strict";
+
+    function mathOperation(arg1, arg2, operation) {
+        switch (operation) {
+            case 'add':
+                return addTwo(arg1, arg2);
+            case 'reduce':
+                return subTwo(arg1, arg2);
+            case 'divide':
+                return divTwo(arg1, arg2);
+            case 'multiply':
+                return mulTwo(arg1, arg2);
+            default:
+                return 'unknown operation!'
+        }
+    }
+
+    console.log(mathOperation(6, 2, 'add')); // Выведется число 8
+    console.log(mathOperation(6, 2, 'reduce')); // Выведется число 4
+    console.log(mathOperation(6, 2, 'divide')); // Выведется число 3
+    console.log(mathOperation(6, 2, 'multiply')); // Выведется число 12
+    console.log(mathOperation(6, 2, 'mulply'));
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!--3. Объявить две переменные a и b и задать им целочисленные произвольные начальные значения.-->
+<!--Затем написать скрипт, который работает по следующему принципу:-->
+<!-- - если a и b положительные, вывести их разность (ноль можно считать положительным числом);-->
+<!-- - если а и b отрицательные, вывести их произведение;-->
+<!-- - если а и b разных знаков, вывести их сумму;-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS1 Ex 2/3</title>
+</head>
+<body>
+<h3>JavaScript 1, homework 2, task 3</h3>
+
+<script>
+    "use strict";
+
+    let a, b;
+    a = +prompt('type a');
+    b = +prompt('type b');
+
+    if (a >= 0 && b >= 0) {
+        console.log(`${a} - ${b} = ${a - b}`)
+    } else if (a < 0 && b < 0) {
+        console.log(`${a} * ${b} = ${a * b}`)
+    } else if (a >= 0 && b < 0 || a < 0 && b >= 0) {
+        console.log(`${a} + ${b} = ${a + b}`)
+    } else {
+        console.log('unexpected condition!')
+    }
+
+</script>
+</body>
+</html>
