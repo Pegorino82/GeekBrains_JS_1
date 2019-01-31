@@ -16,18 +16,17 @@
 <script>
     "use strict";
 
-    let a, b;
-    a = +prompt('type a');
-    b = +prompt('type b');
+    let a = +prompt('type a');
+    let b = +prompt('type b');
 
     if (a >= 0 && b >= 0) {
-        console.log(`${a} - ${b} = ${a - b}`)
+        console.log(`${a} - ${b} = ${a - b}`);
     } else if (a < 0 && b < 0) {
-        console.log(`${a} * ${b} = ${a * b}`)
+        console.log(`${a} * ${b} = ${a * b}`);
     } else if (a >= 0 && b < 0 || a < 0 && b >= 0) {
-        console.log(`${a} + ${b} = ${a + b}`)
+        console.log(`${a} + ${b} = ${a + b}`);
     } else {
-        console.log('unexpected condition!')
+        console.log('unexpected condition!');
     }
 
 </script>

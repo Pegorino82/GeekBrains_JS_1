@@ -33,15 +33,15 @@
         const caseOne = [0, 5, 6, 7, 8, 9, 11, 12, 13, 14]; // ей
         const caseTwo = [2, 3, 4]; // я
 
-        const answer = (amount, ending) => (`Ваша сумма в ${amount} рубл${ending} успешно зачисленна.`);
+        const answer = (amount, ending) => `Ваша сумма в ${amount} рубл${ending} успешно зачисленна.`;
 
-        if (caseOne.indexOf(amount % 10) != -1 || caseOne.indexOf(amount % 100) != -1) {
+        if (caseOne.indexOf(amount % 10) !== -1 || caseOne.indexOf(amount % 100) !== -1) {
             // console.log('в первом случае');
             return answer(amount, 'ей')
         } else if (amount % 10 === 1) {
             // console.log('во втором случае');
             return answer(amount, 'ь')
-        } else if (caseTwo.indexOf(amount % 10) != -1) {
+        } else if (caseTwo.indexOf(amount % 10) !== -1) {
             // console.log('в третьем случае');
             return answer(amount, 'я')
         }
