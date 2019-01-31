@@ -1,0 +1,52 @@
+<!--4*. С помощью цикла while вывести все простые числа -->
+<!--в промежутке от 0 до 100 (можно без оптимизаций).-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS1 Ex 3/4</title>
+</head>
+<body>
+<h3>JavaScript 1, homework 3, task 4</h3>
+
+<script>
+    "use strict";
+
+    /**
+     * функция проверяет число на простое
+     * @param {number} number
+     * @returns {boolean} true если простое false в противном случае
+     */
+    function isSimple(number) {
+        if (number === 0 || number === 1) {
+            return false
+        }
+        for (let i = 2; i < number; i++) {
+            // console.log(i, number%i);
+            if (number % i === 0) return false
+        }
+        return true
+    }
+
+    // console.log(isSimple(1));
+    // console.log(isSimple(3));
+    // console.log(isSimple(13));
+    // console.log(isSimple(12));
+    // console.log(isSimple(91));
+
+
+    let i = 0;
+    while (i <= 100) {
+        if (isSimple(i)) {
+            console.log(i);
+        }
+        i++
+    }
+
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,60 @@
+<!--5*. Дан массив (создать такой же, с такими же значениями):-->
+
+<!--```-->
+<!--const arr = [-->
+  <!--[2, 4, 6],-->
+  <!--[1, 5, 10],-->
+  <!--[7, 4, 1],-->
+<!--];-->
+<!--```-->
+
+<!--Задания:-->
+<!--1. Найти массив, у которого сумма всех чисел максимальна, -->
+<!--вывести в console.log индекс этого массива.-->
+<!--2. Получить и вывести в console.log минимальное значение -->
+<!--найденное в массиве, который мы получили в первом пункте.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS1 Ex 3/5</title>
+</head>
+<body>
+<h3>JavaScript 1, homework 3, task 5</h3>
+
+<script>
+    "use strict";
+
+    const arr = [
+        [2, 4, 6],
+        [1, 5, 10],
+        [7, 4, 1],
+    ];
+
+    let maxSum = 0;
+    let maxSumPos = 0;
+    let minNum = 0;
+
+    for (let i in arr) {
+
+        let tempMaxSum = 0;
+        let tempMinNum = arr[i][0];
+
+        for (let j of arr[i]) {
+            tempMaxSum += j;
+            if (j < tempMinNum) {
+                tempMinNum = j;
+            }
+        }
+        if (tempMaxSum > maxSum) {
+            maxSum = tempMaxSum;
+            minNum = tempMinNum;
+            maxSumPos = i;
+        }
+    }
+    console.log(`позиция: ${maxSumPos} (сумма: ${maxSum}), минимальное число: ${minNum}`);
+
+</script>
+</body>
+</html>
