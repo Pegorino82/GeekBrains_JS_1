@@ -29,6 +29,7 @@
         startPositionY: 0,
     };
 
+
     /**
      * Объект игрока, здесь будут все методы и свойства связанные с ним.
      * @property {int} x Позиция по X-координате.
@@ -37,6 +38,7 @@
     const player = {
         x: null,
         y: null,
+        point: {},
 
         /**
          * Инициализация игрока и его метоположения.
@@ -44,6 +46,8 @@
         init(startX, startY) {
             this.x = startX;
             this.y = startY;
+            this.point.x = this.x;
+            this.point.y = this.y;
         },
 
         /**
@@ -83,7 +87,41 @@
                     break;
             }
         },
+
+        getNextPoint(direction) {
+            switch (direction) {
+                case 1:
+                    this.point.y++;
+                    this.point.x--;
+                    return this.point;
+                case 2:
+                    this.point.y++;
+                    return this.point;
+                case 3:
+                    this.point.y++;
+                    this.point.x++;
+                    return this.point;
+                case 4:
+                    this.point.x--;
+                    return this.point;
+                case 6:
+                    this.point.x++;
+                    return this.point;
+                case 7:
+                    this.point.x--;
+                    this.point.y--;
+                    return this.point;
+                case 8:
+                    this.point.y--;
+                    return this.point;
+                case 9:
+                    this.point.y--;
+                    this.point.x++;
+                    return this.point;
+            }
+        }
     };
+
 
     /**
      * Объект игры, здесь будут все методы и свойства связанные с самой игрой в общем.
@@ -114,8 +152,14 @@
                     return;
                 }
 
-                // Двигаем игрока.
-                this.player.move(direction);
+
+                let nextPoint = this.player.getNextPoint(direction);
+                console.log(nextPoint);
+
+                if (this.canMove(nextPoint)) {
+                    // Двигаем игрока.
+                    this.player.move(direction);
+                }
             }
         },
 
@@ -170,6 +214,17 @@
                 return direction;
             }
         },
+
+        canMove(nextPoint) {
+            if (nextPoint.x > this.settings.rowsCount - 1 || nextPoint.x < 0 || nextPoint.y > this.settings.colsCount - 1 || nextPoint.y < 0) {
+                this.player.point.x = this.player.x;
+                this.player.point.y = this.player.y;
+                return false;
+            } else {
+                return true;
+            }
+        }
+
     };
 
     // Запускаем игру.
