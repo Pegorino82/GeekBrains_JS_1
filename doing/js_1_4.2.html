@@ -56,36 +56,8 @@
          */
         move(direction) {
             // Определяем направление и обновляем местоположение игрока в зависимости от направления.
-            switch (direction) {
-                case 1:
-                    this.y++;
-                    this.x--;
-                    break;
-                case 2:
-                    this.y++;
-                    break;
-                case 3:
-                    this.y++;
-                    this.x++;
-                    break;
-                case 4:
-                    this.x--;
-                    break;
-                case 6:
-                    this.x++;
-                    break;
-                case 7:
-                    this.x--;
-                    this.y--;
-                    break;
-                case 8:
-                    this.y--;
-                    break;
-                case 9:
-                    this.y--;
-                    this.x++;
-                    break;
-            }
+            this.x = this.point.x;
+            this.y = this.point.y;
         },
 
         getNextPoint(direction) {
@@ -154,7 +126,7 @@
 
 
                 let nextPoint = this.player.getNextPoint(direction);
-                console.log(nextPoint);
+                // console.log(nextPoint);
 
                 if (this.canMove(nextPoint)) {
                     // Двигаем игрока.
