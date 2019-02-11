@@ -1,0 +1,62 @@
+<!--Реализовать модуль корзины. У каждого товара есть кнопка «Купить»,-->
+<!--при нажатии на которую происходит добавление имени и цены товара в -->
+<!--блок корзины. Корзина должна уметь считать общую сумму заказа. -->
+<!--Один товар можно добавить несколько раз.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basket</title>
+    <script src="script.js"></script>
+</head>
+<body>
+
+<div id="basket">
+    Количество товаров: <span id="basket-count">0</span>
+    Итого: <span id="basket-price">0</span>
+</div>
+
+<div id="container">
+    <div>
+        <img src="images/1.jpg" width="150" alt="">
+        Цена: 1500 руб.
+        <button class="buy-btn" data-price="1500" data-name="ball_1">Купить</button>
+        <button class="rem-btn" data-price="1500" data-name="ball_1">-</button>
+    </div>
+
+    <div>
+        <img src="images/2.jpg" width="150" alt="">
+        Цена: 1700 руб.
+        <button class="buy-btn" data-price="1700" data-name="ball_2">Купить</button>
+        <button class="rem-btn" data-price="1700" data-name="ball_2">-</button>
+    </div>
+
+    <div>
+        <img src="images/3.jpg" width="150" alt="">
+        Цена: 1750 руб.
+        <button class="buy-btn" data-price="1750" data-name="ball_3">Купить</button>
+        <button class="rem-btn" data-price="1750" data-name="ball_3">-</button>
+    </div>
+
+    <div>
+        <img src="images/4.jpg" width="150" alt="">
+        Цена: 1000 руб.
+        <button class="buy-btn" data-price="1000" data-name="ball_4">Купить</button>
+        <button class="rem-btn" data-price="1000" data-name="ball_4">-</button>
+    </div>
+
+    <div>
+        <img src="images/5.jpg" width="150" alt="">
+        Цена: 1200 руб.
+        <button class="buy-btn" data-price="1200" data-name="ball_5">Купить</button>
+        <button class="rem-btn" data-price="1200" data-name="ball_5">-</button>
+    </div>
+</div>
+
+
+<script>
+    basket.init()
+</script>
+</body>
+</html>
