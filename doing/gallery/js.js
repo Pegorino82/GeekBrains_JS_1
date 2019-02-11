@@ -19,7 +19,14 @@ const gallery = {
         openedImageCloseBtnSrc: 'images/gallery/close.png',
         //task 1
         mockLargeImage: 'images/gallery/large_mock.jpg',
+        //task 3
+        prevImageBtnSrc: 'images/gallery/prev.jpg',
+        nextImageBtnSrc: 'images/gallery/next.jpg',
+        prevButtonClass: 'galleryWrapper__prev',
+        nextButtonClass: 'galleryWrapper__next',
     },
+    openedImage: null,
+    galleryList: null,
 
     /**
      * Инициализирует галерею, ставит обработчик события.
@@ -32,9 +39,8 @@ const gallery = {
         // Находим элемент, где будут превью картинок и ставим обработчик на этот элемент,
         // при клике на этот элемент вызовем функцию containerClickHandler в нашем объекте
         // gallery и передадим туда событие MouseEvent, которое случилось.
-        document
-            .querySelector(this.settings.previewSelector)
-            .addEventListener('click', event => this.containerClickHandler(event));
+        this.galleryList = document.querySelector(this.settings.previewSelector);
+        this.galleryList.addEventListener('click', event => this.containerClickHandler(event));
     },
 
     /**
@@ -49,6 +55,9 @@ const gallery = {
         }
         // Открываем картинку с полученным из целевого тега (data-full_image_url аттрибут).
         this.openImage(event.target.dataset.full_image_url);
+        // task 3
+        this.openedImage = event.target;
+        // console.log(this.openedImage);
     },
 
     /**
@@ -97,12 +106,46 @@ const gallery = {
         closeImageElement.addEventListener('click', () => this.close());
         galleryWrapperElement.appendChild(closeImageElement);
 
+        // task 3
+        //создаем кнопки вперед/назад
+        const prevButton = new Image();
+        prevButton.classList.add(this.settings.prevButtonClass);
+        prevButton.src = this.settings.prevImageBtnSrc;
+        prevButton.addEventListener('click', () => {
+            let prev = this.getPrevImage();
+            if (prev) {
+                this.openImage(prev.dataset.full_image_url);
+                this.openedImage = prev;
+            } else {
+                this.openImage(this.galleryList.lastElementChild.dataset.full_image_url);
+                this.openedImage = this.galleryList.lastElementChild;
+            }
+        });
+        galleryWrapperElement.appendChild(prevButton);
+
+        const nextButton = new Image();
+        nextButton.classList.add(this.settings.nextButtonClass);
+        nextButton.src = this.settings.nextImageBtnSrc;
+        nextButton.addEventListener('click', () => {
+            let next = this.getNextImage();
+            if (next) {
+                this.openImage(next.dataset.full_image_url);
+                this.openedImage = next;
+            } else {
+                this.openImage(this.galleryList.firstElementChild.dataset.full_image_url);
+                this.openedImage = this.galleryList.firstElementChild;
+            }
+        });
+        galleryWrapperElement.appendChild(nextButton);
+
+
         // Создаем картинку, которую хотим открыть, ставим класс и добавляем ее в контейнер-обертку.
         const image = new Image();
         // task 1
         image.onerror = () => {
-          image.src = this.settings.mockLargeImage;
+            image.src = this.settings.mockLargeImage;
         };
+
         image.classList.add(this.settings.openedImageClass);
         galleryWrapperElement.appendChild(image);
 
@@ -112,6 +155,30 @@ const gallery = {
         // Возвращаем добавленный в body элемент, наш контейнер-обертку.
         return galleryWrapperElement;
     },
+
+    /**
+     * Возвращает следующий элемент (картинку) от открытой или первую картинку в контейнере,
+     * если текущая открытая картинка последняя.
+     * @returns {Element} Следующую картинку от текущей открытой.
+     */
+    getNextImage() {
+        // Получаем элемент справа от текущей открытой картинки.
+        // Если элемент справа есть, его и возвращаем, если нет, то берем первый элемент в контейнере миниатюр.
+        return this.openedImage.nextElementSibling;
+
+    },
+
+    /**
+     * Возвращает предыдущий элемент (картинку) от открытой или последнюю картинку в контейнере,
+     * если текущая открытая картинка первая.
+     * @returns {Element} Предыдущую картинку от текущей открытой.
+     */
+    getPrevImage() {
+        // Получаем элемент слева от текущей открытой картинки.
+        // Если элемент слева есть, его и возвращаем, если нет, то берем последний элемент в контейнере миниатюр.
+        return this.openedImage.previousElementSibling;
+    },
+
 
     /**
      * Закрывает (удаляет) контейнер для открытой картинки.
